@@ -1,0 +1,21 @@
+class Solution {
+    /**
+     * @param {string} s
+     * @return {number}
+     */
+    lengthOfLongestSubstring(s) {
+        const seen = new Set()
+    let maxLen = 0
+    let l = 0
+
+    for (let r = 0; r < s.length; r++) {
+        while (seen.has(s[r])) {
+            seen.delete(s[l])
+            l++
+        }
+        seen.add(s[r])
+        maxLen = Math.max(maxLen, seen.size)
+    }
+    return maxLen
+    }
+}
